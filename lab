@@ -370,18 +370,17 @@ public:
 
     Matrix (initializer_list<T> list) // 11
     {   
-        int N0;
-        int M0;
+        
         int counter = -2;
         vector <T>znach;
         for (auto i : list) {
             if (i == 0)
             {
-                N0 = i;
+                this->N=i;
                 counter += 1;
             }
             if (i == 1) {
-                M0 = i;
+                this->M=i;
                 counter += 1;
             }
             if (znach.size() <= counter)
@@ -391,11 +390,10 @@ public:
             }
             counter += 1;
         }
-        this->N = N0;
-        this->M = M0;
+       
         this->data.resize(N, vector <T>(M));
         for (int j = 0; j < znach.size(); j++)
-            this->data[j / N0 ][j % N0] += znach[j];
+            this->data[j / N ][j % N] += znach[j];
 
     }
 };
@@ -408,6 +406,6 @@ int main()
 
 {
     setlocale(LC_ALL, "");
-    Matrix <int> f(5, 5);
+    Matrix <int> f({1, 2 , 3, 4});
  
 }
